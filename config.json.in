@@ -1,0 +1,54 @@
+{
+    "created": "@now@",
+    "author": "@author@",
+    "architecture": "amd64",
+    "os": "linux",
+    "config": {
+        "User": "root:root",
+        "ExposedPorts": {
+            "0/tcp": {
+
+            }
+        },
+        "Env": [
+            "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ],
+        "Entrypoint": [
+
+        ],
+        "Cmd": [
+            "/usr/bin/doge"
+        ],
+        "Volumes": {
+            "/vol": {
+
+            }
+        },
+        "WorkingDir": "/",
+        "Labels": {
+            "these-are": "probably-important",
+            "but-then": "this-was-already-a-bad-idea"
+        }
+    },
+    "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+            "@layer1diffid@",
+            "@layer2diffid@"
+        ]
+    },
+    "history": [
+        {
+            "created": "@layer1date@",
+            "created_by": "/bin/sh -c #",
+            "author": "@author@",
+            "empty_layer": false
+        },
+        {
+            "created": "@layer2date@",
+            "created_by": "/bin/sh -c #",
+            "author": "@author@",
+            "empty_layer": false
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "schemaVersion": 2,
+    "config": {
+        "mediaType": "application/vnd.oci.image.config.v1+json",
+        "digest": "@configdigest@",
+        "size": @configsize@
+    },
+    "layers": [
+        {
+            "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+            "digest": "@layer1digest@",
+            "size": @layer1size@
+        },
+        {
+            "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+            "digest": "@layer2digest@",
+            "size": @layer2size@
+        }
+    ]
+}
