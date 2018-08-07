@@ -12,7 +12,7 @@ if test -d root ; then
 fi
 mkdir -p root
 
-$HOME/projects/containers/buildah/src/github.com/projectatomic/buildah/buildah unshare dnf -y install --nogpgcheck --releasever=28 --installroot $(pwd)/root glibc-langpack-en "${@:-doge}"
-$HOME/projects/containers/buildah/src/github.com/projectatomic/buildah/buildah unshare dnf -y clean all            --releasever=28 --installroot $(pwd)/root
+./unshare2.sh -Um dnf -y install --nogpgcheck --releasever=28 --installroot $(pwd)/root glibc-langpack-en "${@:-doge}"
+./unshare2.sh -Um dnf -y clean all            --releasever=28 --installroot $(pwd)/root
 
 ( cd root ; $HOME/projects/containers/buildah/src/github.com/projectatomic/buildah/buildah unshare tar cf - . ) | gzip > layer2.tar.gz
