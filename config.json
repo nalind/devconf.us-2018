@@ -1,6 +1,6 @@
 {
-    "created": "@now@",
-    "author": "@author@",
+    "created": "2018-08-15T17:08:38.082676757Z",
+    "author": "[Nalin Dahyabhai <nalin@redhat.com>] [A Cast of Tens <root@localhost>]",
     "architecture": "amd64",
     "os": "linux",
     "config": {
@@ -17,7 +17,7 @@
 
         ],
         "Cmd": [
-            "/usr/bin/doge"
+            "/bin/busybox", "find", "/", "-xdev", "-exec", "/bin/busybox", "ls", "-ld", "{}", "+"
         ],
         "Volumes": {
             "/vol": {
@@ -33,21 +33,14 @@
     "rootfs": {
         "type": "layers",
         "diff_ids": [
-            "@layer1diffid@",
-            "@layer2diffid@"
+            "sha256:910581fadc2071f9cc8a23c701deb4284bd645d334822dc27677c2f27cbfde40"
         ]
     },
     "history": [
         {
-            "created": "@layer1date@",
+            "created": "2018-08-15T17:08:38.082676757Z",
             "created_by": "/bin/sh -c #",
-            "author": "@author@",
-            "empty_layer": false
-        },
-        {
-            "created": "@layer2date@",
-            "created_by": "/bin/sh -c #",
-            "author": "@author@",
+            "author": "[Nalin Dahyabhai <nalin@redhat.com>] [A Cast of Tens <root@localhost>]",
             "empty_layer": false
         }
     ]
