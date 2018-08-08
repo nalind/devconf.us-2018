@@ -2,6 +2,7 @@
 
 # Compute UID and GID mappings that use both our IDs and the ones that are
 # allocated for us in /etc/subuid and /etc/subgid.
+# If invoked with -U but NOT with -r, set mappings using newuidmap/newgidmap.
 
 uidmap="0 $(id -u) 1"
 gidmap="0 $(id -g) 1"
@@ -34,6 +35,14 @@ trap "rm -f ${script} ${pidfile}" EXIT
 
 # How much time to wait between checking for synchronization steps.
 delay=0.01
+
+# A function to clear the pid file.
+function clearpidfile() {
+	while ! test -s ${pidfile} ; do
+		sleep ${delay}
+	done
+	: > ${pidfile}
+}
 
 # A function to read the pid file and set its ID maps.
 function setmap() {
@@ -71,5 +80,9 @@ while test -s ${pidfile} ; do
 done
 sh -c "$@"
 EOF
-coproc setmap
-exec unshare -U ${flags} ${script}
+if grep -q U <<< "$flags" && ! grep -q r <<< "$flags" ; then
+	coproc setmap
+else
+	coproc clearpidfile
+fi
+exec unshare ${flags} ${script}
