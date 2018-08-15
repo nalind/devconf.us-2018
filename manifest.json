@@ -7,7 +7,7 @@
     },
     "layers": [
         {
-            "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
+            "mediaType": "application/vnd.oci.image.layer.v1.tar",
             "digest": "sha256:d371eec70a09530df9a099a360ee7edeccde27b691624955f1df82035da8285b",
             "size": 681838
         }
@@ -15,7 +15,7 @@
     "Annotations": {
         "org.opencontainers.image.created": "2018-08-15T17:08:53.762731370Z",
         "org.opencontainers.image.authors": "[Nalin Dahyabhai <nalin@redhat.com>] [A Cast of Tens <root@localhost>]",
-	"org.opencontainers.image.title": "lit",
-	"org.opencontainers.image.description": "like a tire fire"
+        "org.opencontainers.image.title": "lit",
+        "org.opencontainers.image.description": "like a tire fire"
     }
 }
