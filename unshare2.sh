@@ -2,7 +2,11 @@
 
 # Compute UID and GID mappings that use both our IDs and the ones that are
 # allocated for us in /etc/subuid and /etc/subgid.
+#
 # If invoked with -U but NOT with -r, set mappings using newuidmap/newgidmap.
+#
+# Probably doesn't handle PID namespaces correctly, since we trust the child
+# to tell us its PID.
 
 uidmap="0 $(id -u) 1"
 gidmap="0 $(id -g) 1"

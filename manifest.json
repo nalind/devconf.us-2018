@@ -12,8 +12,8 @@
             "size": 681838
         }
     ],
-    "Annotations": {
-        "org.opencontainers.image.created": "2018-08-15T17:08:53.762731370Z",
+    "annotations": {
+        "org.opencontainers.image.created": "2018-08-17T19:08:48.490472993Z",
         "org.opencontainers.image.authors": "[Nalin Dahyabhai <nalin@redhat.com>] [A Cast of Tens <root@localhost>]",
         "org.opencontainers.image.title": "lit",
         "org.opencontainers.image.description": "like a tire fire"
