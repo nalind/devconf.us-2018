@@ -8,9 +8,9 @@ Content from my 2018 devconf.us talk
 
 * `date.sh`:
   - Runs `date`, specifying the right format for use in JSON.
-* `clean-links.sh
+* `clean-links.sh`:
   - Removes symbolic links from the current directory.
-* `fixup.sh
+* `fixup.sh`:
   - Removes symbolic links from the current directory.
   - Digests all .tar, .tar.\*, and .json files in the current directory.
   - Creates symbolic links named after the digests that point to those files.
