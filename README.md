@@ -1,28 +1,26 @@
 # devconf.us-2018
 Content from my 2018 devconf.us talk
 
-* `fixup.sh`:
-  - preprocess `config.json.in` to create `config.json`:
-    - compute diff IDs for `layer*.tar.gz`, substitute them
-    - substitute the author's name and the current date
-  - preprocess `manifest.json.in` to create `manifest.json`:
-    - substitute the digests and sizes of `layer*.tar.gz`
-    - substitute the digest and size of `config.json`
+* config.json
+  - A default for an image's configuration blob.
+* manifest.json
+  - A default for an image's manifest.
 
-* `layer1.tar.gz`: an empty layer
-  - created with `gzip < /dev/null > layer1.tar.gz`
+* date.sh
+  - Runs `date`, specifying the right format for use in JSON.
+* clean-links.sh
+  - Removes symbolic links from the current directory.
+* fixup.sh
+  - Removes symbolic links from the current directory.
+  - Digests all .tar, .tar.\*, and .json files in the current directory.
+  - Creates symbolic links named after the digests that point to those files.
 
-* `layer2.tar.gz`: a layer that we can generate
-  * `make-layer2-1.sh`:
-    * copies /usr/sbin/busybox from host into /bin under the root
-    * the resulting content is owned by my user ID
-  * `make-layer2-2.sh`:
-    * copies /usr/sbin/busybox from host into /bin under the root
-    * uses `unshare` to run `tar`; the resulting content is owned by root
-  * `make-layer2-3.sh`:
-    * uses `dnf` to install packages into the root
-    * uses `unshare` to run `dnf` and `tar`; the resulting content is owned by "root"
-    * `unshare` only maps a single ID, so packages which contain content not owned by mapped IDs fail to install
-  * `make-layer2-4.sh`:
-    * uses `dnf` to install packages into the root
-    * uses `buildah unshare` to run `dnf` and `tar`; the resulting content is owned by "root"
+* unshare2.sh
+  - Wraps unshare(1).
+  - If invoked with -U and not with -r, maps the current user's UID and primary
+    GID to 0, and uses newuidmap/newgidmap to map ranges in /etc/subuid and
+    /etc/subgid, in sequence, into the namespace, starting with 1, 
+
+* dnf-install.sh
+  - Invokes dnf with some flags which should help in populating a chroot
+    environment in ./root.  Can be run under `unshare2.sh -U`.

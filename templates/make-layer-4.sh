@@ -12,7 +12,7 @@ if test -d root ; then
 fi
 mkdir -p root
 
-./unshare2.sh -Um dnf -y install --nogpgcheck --releasever=28 --installroot $(pwd)/root glibc-langpack-en "${@:-doge}"
-./unshare2.sh -Um dnf -y clean all            --releasever=28 --installroot $(pwd)/root
+./unshare2.sh -Um dnf -y install   --releasever=28 --installroot $(pwd)/root --disablerepo="*" --enablerepo=fedora --enablerepo=updates --nogpgcheck --nodocs --setopt install_weak_deps=false glibc-langpack-en "${@:-doge}"
+./unshare2.sh -Um dnf -y clean all --releasever=28 --installroot $(pwd)/root
 
 ( cd root ; $HOME/projects/containers/buildah/src/github.com/projectatomic/buildah/buildah unshare tar cf - . ) | gzip > layer2.tar.gz
