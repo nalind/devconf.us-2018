@@ -24,3 +24,6 @@ Content from my 2018 devconf.us talk
 * `dnf-install.sh`:
   - Invokes dnf with some flags which should help in populating a chroot
     environment in ./root.  Can be run under `unshare2.sh -U`.
+
+* `images.odp`:
+  - Slides.
